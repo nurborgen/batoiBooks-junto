@@ -1,10 +1,10 @@
 <script setup>
 import AppMenu from './components/AppMenu.vue'
 import AppMessages from './components/AppMessages.vue'
-import BookList from './components/BooksList.vue'
-import AddBook from './components/AddBook.vue'
-import AppCart from './components/AppCart.vue'
-import AppAbout from './components/AppAbout.vue'
+import BookList from './views/BooksList.vue'
+import AddBook from './views/AddBook.vue'
+import AppCart from './views/AppCart.vue'
+import AppAbout from './views/AppAbout.vue'
 </script>
 
 <template>

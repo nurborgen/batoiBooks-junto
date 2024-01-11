@@ -3,7 +3,8 @@ import axios from 'axios'
 
 const SERVER = 'http://localhost:3000'
 
-mounted() {
+export default {
+    mounted() {
     axios.get(SERVER + '/todos')
         .then(response => this.todos = response.data)
         .catch(response => {
@@ -11,6 +12,9 @@ mounted() {
             this.todos = []
         })
 }
+}
+
+
 </script>
 
 <template>
