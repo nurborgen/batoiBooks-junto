@@ -1,15 +1,25 @@
 <script>
-import BooksRepository from '../repositories/books.repository'
-
+import ModulesRepository from '@/repositories/modules.repository'
 
 export default {
     name: 'add-book',
     data() {
         return {
-            
+            modules: {}
         }
     },
-    
+
+    async mounted() {
+        let booksRepository = new BooksRepository()
+        try {
+            this.books = await booksRepository.getAllBooks()
+        } catch (error) {
+            throw error
+        }
+    },
+    components: {
+        BookItem, 
+    }
 }
 
 let id = 3

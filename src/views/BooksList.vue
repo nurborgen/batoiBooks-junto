@@ -1,24 +1,30 @@
 <script>
-import axios from 'axios'
-
-const SERVER = 'http://localhost:3000'
+import BooksRepository from '@/repositories/books.repository'
+import BookItem from '@/components/BookItem.vue'
 
 export default {
-    mounted() {
-    axios.get(SERVER + '/todos')
-        .then(response => this.todos = response.data)
-        .catch(response => {
-            alert('Error: ' + response.message)
-            this.todos = []
-        })
-}
-}
+    data() {
+        return {
+            books: {}
+        }
+    },
 
-
+    async mounted() {
+        let booksRepository = new BooksRepository()
+        try {
+            this.books = await booksRepository.getAllBooks()
+        } catch (error) {
+            throw error
+        }
+    },
+    components: {
+        BookItem, 
+    }
+}
 </script>
 
 <template>
     <div>
-        <book-item v-bind:book="book" v-for="(book) in books"></book-item>
+        <book-item v-bind:book="book" v-for="(book) in this.books"></book-item>
     </div>
 </template>
