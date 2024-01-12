@@ -10,16 +10,13 @@ export default {
     },
 
     async mounted() {
-        let booksRepository = new BooksRepository()
+        let modulesRepository = new ModulesRepository()
         try {
-            this.books = await booksRepository.getAllBooks()
+            this.modules = await modulesRepository.getAllModules()
         } catch (error) {
             throw error
         }
     },
-    components: {
-        BookItem, 
-    }
 }
 
 let id = 3
@@ -36,7 +33,7 @@ let id = 3
         <div>
             <label for="id-module">Módulo:</label>
             <select id="id-module">
-                <option>- Selecciona un módulo -</option>
+                <option v-bind:module="module" v-for="(module) in this.modules"> {{ module.cliteral }} </option>
             </select><br>
         </div>
 
