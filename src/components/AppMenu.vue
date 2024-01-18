@@ -1,9 +1,7 @@
-<script>
-
-</script>
+<script></script>
 
 <template>
-    <nav>
+  <nav>
     <ul>
       <li><router-link to="/books">Ver Libros</router-link></li>
       <li><router-link to="/new">Añadir Libro</router-link></li>

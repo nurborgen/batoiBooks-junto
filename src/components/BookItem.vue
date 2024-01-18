@@ -1,4 +1,7 @@
 <script>
+import SvgIcon from '@jamescoyle/vue-icon'
+import { mdiAccount } from '@mdi/js'
+
 export default {
   props: {
     book: {
@@ -6,6 +9,14 @@ export default {
       required: true
     }
   },
+  components: {
+    SvgIcon
+  }, 
+  data() {
+    return {
+      path: mdiAccount,
+    }
+  }
 }
 </script>
 
@@ -16,8 +27,9 @@ export default {
     <p>Precio: {{ book.price }}</p>
     <p>Páginas: {{ book.pages }}</p>
     <p>Estado: {{ book.status }}</p>
-    <p>{{ book.soldDate ? "Vendido el: " + book.soldDate : "En venta" }}</p>
-    <p>Comentarios: {{ book.comments }} </p>
+    <p>{{ book.soldDate ? 'Vendido el: ' + book.soldDate : 'En venta' }}</p>
+    <p>Comentarios: {{ book.comments }}</p>
+    <svg-icon type="cart"></svg-icon>
     <button class="cart">
       <span class="material-icons">add_shopping_cart</span>
     </button>
