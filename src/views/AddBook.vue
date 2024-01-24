@@ -5,6 +5,7 @@ import router from '@/router'
 
 export default {
   name: 'add-book',
+  props: ['id'],
   data() {
     return {
       modules: {},
@@ -14,7 +15,12 @@ export default {
 
   async mounted() {
     let modulesRepository = new ModulesRepository()
+    let booksRepository = new BooksRepository()
+
     try {
+      if (this.id) {
+        this.book = await booksRepository.getBooksById(this.id)
+      }
       this.modules = await modulesRepository.getAllModules()
     } catch (error) {
       throw error
@@ -25,7 +31,7 @@ export default {
     addBook() {
       let booksRepository = new BooksRepository()
       try {
-        if(this.book.id) {
+        if (this.book.id) {
           booksRepository.changeBook(this.book)
         } else {
           booksRepository.addBooks(this.book)
@@ -45,16 +51,19 @@ let id = 3
 <template>
   <div id="titulo"></div>
   <form @submit.prevent="addBook" @reset.prevent="handleReset">
-    <div hidden>
-      <label for="id">Id:</label>
-      <input id="id" readonly />
+    <h3 v-if="$route.path == '/new'">Añadir libro</h3>
+    <h3 v-else>Editar libro</h3>
+    <div v-if="$route.name == 'edit'">
+      <label>Id:</label>
+      <input v-model="book.id" type="text" readonly />
     </div>
     <div>
       <label for="id-module">Módulo:</label>
-      <select v-model="this.book.idModule">
+      <select v-model="book.idModule" required>
         <option v-for="module in modules" :key="module.code" :value="module.code">
           {{ module.cliteral }}
-        </option></select><br/>
+        </option>
+      </select>
     </div>
 
     <div>

@@ -1901,33 +1901,6 @@
       "pages": "21",
       "status": "new",
       "comments": "aaaa"
-    },
-    {
-      "idModule": "0011",
-      "publisher": "bromera",
-      "price": 19,
-      "pages": 365,
-      "status": "good",
-      "comments": "asdfjhs oiuy s oihf",
-      "id": 12
-    },
-    {
-      "idModule": "0012",
-      "publisher": "asdfg",
-      "price": 34,
-      "pages": 245,
-      "status": "new",
-      "comments": "fcgh  ryhfj",
-      "id": 13
-    },
-    {
-      "idModule": "0028",
-      "publisher": "xcgh",
-      "price": 23,
-      "pages": 542,
-      "status": "good",
-      "comments": "dfgh dfgh fgh",
-      "id": 14
     }
   ]
 }

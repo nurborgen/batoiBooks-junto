@@ -14,21 +14,25 @@ const router = createRouter({
     },
     {
       path: '/books',
+      name: 'books',
       component: BooksList
     },
     {
       path: '/new',
+      name: 'new',
       component: AddBook
-    }, 
+    },
     {
       path: '/cart',
+      name: 'cart',
       component: AppCart
     },
-    //{
-    //path: '/edit/:id',
-    //component: BookEdit,
-    //props: true
-    //}
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      component: AddBook,
+      props: true
+    }
   ]
 })
 
