@@ -1,6 +1,9 @@
 <script>
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiAccount } from '@mdi/js'
+import AddCart from './icons/AddCart.vue'
+import EditBook from './icons/EditBook.vue'
+import DeleteBook from './icons/DeleteBook.vue'
 
 export default {
   props: {
@@ -10,7 +13,10 @@ export default {
     }
   },
   components: {
-    SvgIcon
+    SvgIcon,
+    AddCart,
+    EditBook,
+    DeleteBook,
   }, 
   data() {
     return {
@@ -29,15 +35,14 @@ export default {
     <p>Estado: {{ book.status }}</p>
     <p>{{ book.soldDate ? 'Vendido el: ' + book.soldDate : 'En venta' }}</p>
     <p>Comentarios: {{ book.comments }}</p>
-    <svg-icon type="cart"></svg-icon>
-    <button class="cart">
-      <span class="material-icons">add_shopping_cart</span>
+    <button>
+      <add-cart></add-cart>
     </button>
-    <button class="edit">
-      <span class="material-icons">edit</span>
+    <button>
+      <edit-book></edit-book>
     </button>
-    <button class="delete">
-      <span class="material-icons">delete</span>
+    <button>
+      <delete-book></delete-book>
     </button>
   </div>
 </template>

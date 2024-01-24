@@ -1,6 +1,7 @@
 <script>
 import ModulesRepository from '@/repositories/modules.repository'
 import BooksRepository from '@/repositories/books.repository'
+import router from '@/router'
 
 export default {
   name: 'add-book',
@@ -24,10 +25,16 @@ export default {
     addBook() {
       let booksRepository = new BooksRepository()
       try {
-        booksRepository.addBooks(this.book)
+        if(this.book.id) {
+          booksRepository.changeBook(this.book)
+        } else {
+          booksRepository.addBooks(this.book)
+        }
       } catch {
-
+        throw error
       }
+      this.book = {}
+      router.push('/books')
     }
   }
 }
@@ -47,8 +54,7 @@ let id = 3
       <select v-model="this.book.idModule">
         <option v-for="module in modules" :key="module.code" :value="module.code">
           {{ module.cliteral }}
-        </option></select
-      ><br />
+        </option></select><br/>
     </div>
 
     <div>

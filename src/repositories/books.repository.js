@@ -58,7 +58,7 @@ export default class BooksRepository {
     return datos
   }
 
-  async changeBooks(book) {
+  async changeBook(book) {
     const response = await fetch(this.SERVER + '/books/' + book.id, {
       method: 'PUT',
       body: JSON.stringify(book),
