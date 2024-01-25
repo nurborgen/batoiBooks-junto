@@ -1,6 +1,7 @@
 <script>
 import BooksRepository from '@/repositories/books.repository'
 import BookItem from '@/components/BookItem.vue'
+import { store } from '../store/index.js'
 
 export default {
   data() {
@@ -14,7 +15,7 @@ export default {
     try {
       this.books = await booksRepository.getAllBooks()
     } catch (error) {
-      throw error
+      store.setMessageAction('No hay libros en la base de datos')
     }
   },
   components: {

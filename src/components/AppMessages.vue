@@ -1,28 +1,33 @@
 <script>
+import { store } from '../store/index.js';
 
 export default {
   data() {
     return {
-      messages: 'Hola'
+      message: store.state.message
     }
   },
-
-  //async mounted() {
-  //  
-  //},
-  //components: {
-  //  
-  //}
+  methods: {
+    limpiarMens() {
+      store.clearMessageAction()
+    }
+  }
 }
 </script>
 
 <template>
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-    onclick="this.parentElement.remove()">
-    {{ this.messages }}
-  </button>
+  <div v-for="item in message" class="btn-close">
+    <label>
+      {{ item }}
+    </label>
+    <button type="button" data-bs-dismiss="alert"
+      aria-label="Close" @click="limpiarMens">x</button>
+  </div>
+  
 </template>
+
+<style>
+  .btn-close {
+    color: red;
+  }
+</style>

@@ -2,6 +2,7 @@
 import ModulesRepository from '@/repositories/modules.repository'
 import BooksRepository from '@/repositories/books.repository'
 import router from '@/router'
+import { store } from '../store/index.js'
 
 export default {
   name: 'add-book',
@@ -23,7 +24,7 @@ export default {
       }
       this.modules = await modulesRepository.getAllModules()
     } catch (error) {
-      throw error
+      store.setMessageAction('No se ha encontrado el libro')
     }
   },
 
@@ -99,7 +100,8 @@ let id = 3
       <textarea id="comments" v-model="book.comments" required></textarea>
     </div>
 
-    <button type="submit">Añadir</button>
+    <button  v-if="$route.path == '/new'" type="submit">Añadir</button>
+    <button  v-else type="submit">Editar</button>
     <button type="reset">Reset</button>
   </form>
 </template>

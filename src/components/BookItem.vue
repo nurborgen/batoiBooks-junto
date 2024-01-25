@@ -6,6 +6,7 @@ import EditBook from './icons/EditBook.vue'
 import DeleteBook from './icons/DeleteBook.vue'
 import router from '@/router'
 import BooksRepository from '@/repositories/books.repository'
+import { store } from '../store/index.js'
 
 export default {
   props: {
@@ -35,7 +36,7 @@ export default {
         await booksRepository.removeBooks(book.id)
         router.push('/books')
       } catch (error) {
-        throw error
+        store.setMessageAction('No se ha podido borrar el libro')
       }
       
     }
